@@ -4,6 +4,37 @@
 
 ---
 
+## v1.13.0 — Karpathy Guidelines Integration: Surgical Precision & Engineering Simplicity
+**Дата**: 2026-09-09  
+**Приоритет**: CRITICAL  
+**Update Log**: [`updates/013-karpathy-guidelines-engineering-discipline.md`](./updates/013-karpathy-guidelines-engineering-discipline.md)
+
+### Добавлено:
+* **Правило «17. Инженерная простота, проверка шагов и конструктивное возражение (Karpathy Discipline)» (Раздел 7 в SKILL.md)**:
+  * **Конструктивное возражение (Push back when warranted)**: открыто предлагать более простой путь при оверинжиниринге; показывать компромиссы (tradeoffs); задавать вопросы при неоднозначности вместо скрытых догадок.
+  * **Тест старшего инженера (Senior Engineer Simplicity Test)**: запрет спекулятивной гибкости и одноразовых абстракций; правило «200 строк в 50».
+  * **Пошаговая верификация (Step → Verify)**: привязка явного критерия проверки к каждому шагу плана.
+* **Блок валидации Karpathy Discipline**: чек-лист Раздела 16 дополнен проверками Anti-Style-Drift, Senior Engineer Test, защитой legacy-кода и Step → Verify.
+* **Глобальная синхронизация**: правило 17 добавлено в `GEMINI.md`, `~/.gemini/GEMINI.md` и `.agents/AGENTS.md`.
+
+### Изменено:
+* `SKILL.md`:
+  * Обновлено правило 11 («Очистка кода»): закреплен принцип «Clean up only your own mess» — запрещено самовольно удалять чужой legacy-код.
+  * Обновлено правило 13 («Принцип минимального изменения»): внедрен строгий запрет попутного рефакторинга и смены стиля (Anti-Style-Drift); тест diff (каждая строка прямо следует из запроса).
+  * Внедрено правило 17; версия повышена до `v1.13.0`.
+* `DESIGN_MEMORY.md`: в Avoid Rules добавлены правила `Avoid: Drive-by Refactoring & Style Drift` и `Avoid: Deleting Unrelated Legacy Code`.
+* `templates/subagent-team-blueprint.md`: в фундаментальные стандарты и роли `System Architect`, `Frontend Engineer`, `Backend Engineer`, `Code Reviewer` интегрированы требования Karpathy Discipline.
+* `README.md`: актуализирована версия v1.13.0 и список правил.
+
+### Study / Review:
+**Priority**: CRITICAL
+- [x] Интегрировать правила 11, 13, 17 в `SKILL.md`, `GEMINI.md`, `AGENTS.md`
+- [x] Обновить `DESIGN_MEMORY.md`, `subagent-team-blueprint.md` и `README.md`
+- [ ] Контролировать diff перед коммитом на прямое соответствие запросу (без Style Drift)
+- [ ] Проверять наличие условий `verify` во всех пошаговых планах
+
+---
+
 ## v1.12.0 — Concise and Clear Communication Discipline
 **Дата**: 2026-09-09  
 **Приоритет**: CRITICAL  
