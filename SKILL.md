@@ -1,7 +1,7 @@
 ---
 name: go-build
 description: >-
-  ОБЯЗАТЕЛЬНЫЙ архитектурный стандарт и скилл для ВСЕХ задач разработки ПО, программирования, написания или изменения кода, проектирования, верстки, архитектуры, рефакторинга и багфикса. Применяется для веб-сайтов, веб-приложений, CRM-систем, административных панелей, внутренних сервисов, ботов, скриптов, десктопных приложений (macOS, Windows, Linux), GUI и IMGUI-интерфейсов. Включает универсальную дисциплину интерфейса и верстки (Universal UI, Layout & Visual Discipline: Borders Are Not Default Decoration, No Div-Hell, Gap Before Margin, No Positioning as Layout, Responsive By Default, No Fixed-Width Fragility, Content & Typography Adaptation, Visual Simplicity Rule, Final UI Stress Test), универсальную модульную архитектуру и упрощение кода (Universal Modularity & Code Simplicity, Native Module Systems, Main File Principle, Do Not Over-Modularize, Responsibility-Based Modules, God File/Module Detection, Anti-Abstraction), механизм принудительного исполнения (Rule Enforcement & Execution Discipline: иерархия P0-P3, Scope Lock, Pre-Action Gate, Rule Trigger Map, Violation Protocol, Continuous Compliance Check), сохранение первоначального смысла, 16-блочный предпроектный анализ (для FULL_PROJECT), оркестрацию 4–10 субагентов, кроссплатформенный UI и адаптивность окон (Window-First Adaptivity, Content Priority, GUI/IMGUI discipline, Web-to-Desktop migration), строгие дизайн-ограничения (Zero-Emoji, Anti-AI-Slop, No Fake Product Context, User Request > AI Atmosphere, Radical Header Minimalism, Purity Formula, Border Last Principle), строгое поведение агента (Strict Scope Adherence, No Scope Creep, запрет самовольного расширения, модульность, очистка кода, минимум проверок, принцип минимального изменения, «Сначала искать, потом создавать», краткая и понятная коммуникация), правило трех действий, долговременную память предпочтений пользователя (User Design DNA в DESIGN_MEMORY.md), русский язык коммуникации, аудит библиотек и строгое версионирование (CHANGELOG.md, updates/).
+  ОБЯЗАТЕЛЬНЫЙ архитектурный стандарт и скилл для ВСЕХ задач разработки ПО, программирования, написания или изменения кода, проектирования, верстки, архитектуры, рефакторинга и багфикса. Применяется для веб-сайтов, веб-приложений, CRM-систем, административных панелей, внутренних сервисов, ботов, скриптов, десктопных приложений (macOS, Windows, Linux), GUI и IMGUI-интерфейсов. Включает универсальную дисциплину интерфейса и верстки (Universal UI, Layout & Visual Discipline: Borders Are Not Default Decoration, No Div-Hell, Gap Before Margin, No Positioning as Layout, Responsive By Default, No Fixed-Width Fragility, Content & Typography Adaptation, Visual Simplicity Rule, Final UI Stress Test), универсальную модульную архитектуру и упрощение кода (Universal Modularity & Code Simplicity, Native Module Systems, Main File Principle, Do Not Over-Modularize, Responsibility-Based Modules, God File/Module Detection, Anti-Abstraction), механизм принудительного исполнения (Rule Enforcement & Execution Discipline: иерархия P0-P3, Scope Lock, Pre-Action Gate, Rule Trigger Map, Violation Protocol, Continuous Compliance Check), сохранение первоначального смысла, 16-блочный предпроектный анализ (для FULL_PROJECT), оркестрацию 4–10 субагентов, кроссплатформенный UI и адаптивность окон (Window-First Adaptivity, Content Priority, GUI/IMGUI discipline, Web-to-Desktop migration), строгие дизайн-ограничения (Zero-Emoji, Anti-AI-Slop, No Fake Product Context, User Request > AI Atmosphere, Radical Header Minimalism, Purity Formula, Border Last Principle), строгое поведение агента (Strict Scope Adherence, No Scope Creep, запрет самовольного расширения, модульность, очистка кода, минимум проверок, принцип минимального изменения, «Сначала искать, потом создавать», краткая и понятная коммуникация), правило трех действий, долговременную память предпочтений пользователя (User Design DNA в DESIGN_MEMORY.md), русский язык коммуникации, аудит библиотек и строгое версионирование (updates/).
 ---
 
 # GO-BUILD: Архитектурный стандарт разработки цифровых продуктов
@@ -1568,21 +1568,17 @@ GO-BUILD не просто генерирует интерфейсы, а неп�
 
 GO-BUILD имеет собственную строгую систему версионирования. Текущая версия: **v1.19.0**.
 
-### 20.1. Главный реестр изменений: [`CHANGELOG.md`](./CHANGELOG.md)
-Содержит хронологию всех версий с датами, списком добавленного/измененного и обязательным блоком **Study / Review** (с приоритетами HIGH / MEDIUM / LOW).
-
-### 20.2. Каталог обновлений: [`updates/`](./updates/)
+### 20.1. Каталог обновлений: [`updates/`](./updates/)
 Каждое существенное изменение стандарта фиксируется отдельным update-файлом (`updates/NNN-topic.md`), включающим версию, причину, новые правила, измененные файлы и чеклист для изучения.
 
-### 20.3. Реестр исследований: [`research/`](./research/)
+### 20.2. Реестр исследований: [`research/`](./research/)
 Результаты исследований дизайн-систем, UI-паттернов и библиотек документируются по стандарту [`research/README.md`](./research/README.md).
 
-### 20.4. Правило сохранения истории
+### 20.3. Правило сохранения истории
 **Никогда не перезаписывать историю.** Старые правила не удаляются бесследно, а помечаются как `Deprecated` с фиксацией перехода к новым правилам. Любой разработчик должен понимать, почему скилл работает именно так.
 
-### 20.5. Обязательный протокол после доработки скилла:
+### 20.4. Обязательный протокол после доработки скилла:
 1. Обновить `SKILL.md`.
 2. Обновить `DESIGN_MEMORY.md` при изменениях дизайн-правил.
 3. Создать новый файл в `updates/`.
-4. Добавить запись с блоком `Study / Review` в `CHANGELOG.md`.
-5. Увеличить версию скилла.
+4. Увеличить версию скилла.
