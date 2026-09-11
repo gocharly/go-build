@@ -1,5 +1,3 @@
-![GO-BUILD](assets/banner.png)
-
 # GO-BUILD
 
 **Архитектурный стандарт разработки цифровых продуктов и регламент дисциплины AI-ассистентов**
@@ -82,7 +80,6 @@ go-build/
 ├── research/                # База исследований архитектур и паттернов
 │   ├── README.md            # Регламент ведения исследований
 │   └── 001-anthropic-cybersecurity-skills-and-security-verification.md
-└── assets/                  # Графические ассеты и баннеры
 ```
 
 ---
