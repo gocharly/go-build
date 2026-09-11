@@ -1,0 +1,33 @@
+{
+  "name": "go-build",
+  "version": "1.19.0",
+  "description": "Помощник для вайбкодеров: чистая архитектура и правила для AI-ассистентов",
+  "type": "module",
+  "bin": {
+    "go-build": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "SKILL.md",
+    "DESIGN_MEMORY.md",
+    "README.md",
+    "references",
+    "templates",
+    "updates"
+  ],
+  "keywords": [
+    "antigravity",
+    "claude-code",
+    "cursor",
+    "vibecoding",
+    "architecture",
+    "agent-skill",
+    "go-build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gocharly/go-build.git"
+  },
+  "author": "gocharly",
+  "license": "MIT"
+}

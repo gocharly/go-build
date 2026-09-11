@@ -33,7 +33,17 @@
 
 ### Как подключить
 
-Просто добавь в `GEMINI.md`, `AGENTS.md` или `CLAUDE.md`:
+Установить одной командой через `npx`:
+
+```bash
+# В текущий проект
+npx go-build
+
+# Или глобально для всех проектов (Antigravity, Claude Code, Cursor)
+npx go-build -g
+```
+
+Или просто добавь строчку в `GEMINI.md`, `AGENTS.md` или `CLAUDE.md`:
 
 ```markdown
 Для любых задач разработки используй скилл go-build (~/.agents/skills/go-build/SKILL.md).
