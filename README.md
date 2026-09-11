@@ -57,7 +57,4 @@ npx @gocharly/go-build -g
 
 ---
 
-### Автор и комьюнити
-
-Развиваю подходы к чистому вайбкодингу и делюсь исходниками в Telegram:  
-👉 **[@charlyex](https://t.me/charlyex)**
+Давай к нам: [@charlyex](https://t.me/charlyex)
