@@ -37,10 +37,11 @@
 
 ```bash
 # В текущий проект
-npx go-build
+npx @gocharly/go-build
+# (или npx go-build)
 
 # Или глобально для всех проектов (Antigravity, Claude Code, Cursor)
-npx go-build -g
+npx @gocharly/go-build -g
 ```
 
 Или просто добавь строчку в `GEMINI.md`, `AGENTS.md` или `CLAUDE.md`:

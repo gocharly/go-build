@@ -1,6 +1,6 @@
 {
-  "name": "go-build",
-  "version": "1.19.0",
+  "name": "@gocharly/go-build",
+  "version": "1.0.0",
   "description": "Помощник для вайбкодеров: чистая архитектура и правила для AI-ассистентов",
   "type": "module",
   "bin": {
@@ -24,6 +24,9 @@
     "agent-skill",
     "go-build"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gocharly/go-build.git"
