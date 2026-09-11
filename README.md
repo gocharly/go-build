@@ -54,3 +54,10 @@ npx @gocharly/go-build -g
 ```markdown
 Для любых задач разработки используй скилл go-build (~/.agents/skills/go-build/SKILL.md).
 ```
+
+---
+
+### Автор и комьюнити
+
+Развиваю подходы к чистому вайбкодингу и делюсь исходниками в Telegram:  
+👉 **[@charlyex](https://t.me/charlyex)**
