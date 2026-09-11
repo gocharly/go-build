@@ -1,6 +1,6 @@
 {
   "name": "@gocharly/go-build",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Помощник для вайбкодеров: чистая архитектура и правила для AI-ассистентов",
   "type": "module",
   "bin": {

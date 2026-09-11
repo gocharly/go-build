@@ -1,7 +1,7 @@
 ---
 name: go-build
 description: >-
-  ОБЯЗАТЕЛЬНЫЙ архитектурный стандарт и скилл для ВСЕХ задач разработки ПО, программирования, написания или изменения кода, проектирования, верстки, архитектуры, рефакторинга и багфикса. Применяется для веб-сайтов, веб-приложений, CRM-систем, административных панелей, внутренних сервисов, ботов, скриптов, десктопных приложений (macOS, Windows, Linux), GUI и IMGUI-интерфейсов. Включает универсальную дисциплину интерфейса и верстки (Universal UI, Layout & Visual Discipline: Borders Are Not Default Decoration, No Div-Hell, Gap Before Margin, No Positioning as Layout, Responsive By Default, No Fixed-Width Fragility, Content & Typography Adaptation, Visual Simplicity Rule, Final UI Stress Test), универсальную модульную архитектуру и упрощение кода (Universal Modularity & Code Simplicity, Native Module Systems, Main File Principle, Do Not Over-Modularize, Responsibility-Based Modules, God File/Module Detection, Anti-Abstraction), механизм принудительного исполнения (Rule Enforcement & Execution Discipline: иерархия P0-P3, Scope Lock, Pre-Action Gate, Rule Trigger Map, Violation Protocol, Continuous Compliance Check), сохранение первоначального смысла, 16-блочный предпроектный анализ (для FULL_PROJECT), оркестрацию 4–10 субагентов, кроссплатформенный UI и адаптивность окон (Window-First Adaptivity, Content Priority, GUI/IMGUI discipline, Web-to-Desktop migration), строгие дизайн-ограничения (Zero-Emoji, Anti-AI-Slop, No Fake Product Context, User Request > AI Atmosphere, Radical Header Minimalism, Purity Formula, Border Last Principle), строгое поведение агента (Strict Scope Adherence, No Scope Creep, запрет самовольного расширения, модульность, очистка кода, минимум проверок, принцип минимального изменения, «Сначала искать, потом создавать», краткая и понятная коммуникация), правило трех действий, долговременную память предпочтений пользователя (User Design DNA в DESIGN_MEMORY.md), русский язык коммуникации, аудит библиотек и строгое версионирование (updates/).
+  ОБЯЗАТЕЛЬНЫЙ архитектурный стандарт и скилл для ВСЕХ задач разработки ПО, программирования, написания или изменения кода, проектирования, верстки, архитектуры, рефакторинга и багфикса. Применяется для веб-сайтов, веб-приложений, CRM-систем, административных панелей, внутренних сервисов, ботов, скриптов, десктопных приложений (macOS, Windows, Linux), GUI и IMGUI-интерфейсов. Включает закон предварительного анализа и обязательного одобрения пользователем (Root-Cause Analysis, Scale Assessment, Multi-Agent/User Discussion, Mandatory User Approval Gate: прежде любых правок кода агент оценивает масштаб, исследует первопричину бага или задачи, продумывает решение, обсуждает с субагентами при необходимости и в первую очередь подробно раскладывает пользователю «что да как», а к правкам кода приступает СТРОГО после явного одобрения пользователем), универсальную дисциплину интерфейса и верстки (Universal UI, Layout & Visual Discipline: Borders Are Not Default Decoration, No Div-Hell, Gap Before Margin, No Positioning as Layout, Responsive By Default, No Fixed-Width Fragility, Content & Typography Adaptation, Visual Simplicity Rule, Final UI Stress Test), универсальную модульную архитектуру и упрощение кода (Universal Modularity & Code Simplicity, Native Module Systems, Main File Principle, Do Not Over-Modularize, Responsibility-Based Modules, God File/Module Detection, Anti-Abstraction), механизм принудительного исполнения (Rule Enforcement & Execution Discipline: иерархия P0-P3, Scope Lock, Pre-Action Gate, Rule Trigger Map, Violation Protocol, Continuous Compliance Check), сохранение первоначального смысла, 16-блочный предпроектный анализ (для FULL_PROJECT), оркестрацию 4–10 субагентов, кроссплатформенный UI и адаптивность окон (Window-First Adaptivity, Content Priority, GUI/IMGUI discipline, Web-to-Desktop migration), строгие дизайн-ограничения (Zero-Emoji, Anti-AI-Slop, No Fake Product Context, User Request > AI Atmosphere, Radical Header Minimalism, Purity Formula, Border Last Principle), строгое поведение агента (Strict Scope Adherence, No Scope Creep, запрет самовольного расширения, модульность, очистка кода, минимум проверок, принцип минимального изменения, «Сначала искать, потом создавать», краткая и понятная коммуникация), правило трех действий, долговременную память предпочтений пользователя (User Design DNA в DESIGN_MEMORY.md), русский язык коммуникации, аудит библиотек и строгое версионирование (updates/).
 ---
 
 # GO-BUILD: Архитектурный стандарт разработки цифровых продуктов
@@ -14,24 +14,25 @@ description: >-
 
 ### Главный принцип
 
-**Не просто написать код. Сначала понять применимые правила, зафиксировать Scope Lock, пройти Pre-Action Gate, построить архитектуру и только после этого приступать к разработке.**
+**Не бросаться писать код. Сначала понять применимые правила, оценить масштаб, исследовать первопричину задачи/ошибки, выработать решение, обсудить с субагентами (при необходимости) и подробно разложить пользователю «что да как», получить явное одобрение пользователя (User Approval Gate) и только после этого приступать к хирургической разработке.**
 
-### Ключевые операционные правила и 6-фазный рельсовый конвейер (Обязательно):
+### Ключевые операционные правила и рельсовый конвейер с гейтом одобрения:
 
-GO-BUILD работает как **детерминированный 6-фазный рельсовый конвейер (State Machine)** с явным разделением на зелёный коридор (**DO / ENCOURAGED**) и красный коридор (**DON'T / FORBIDDEN**), а также системой инженерного вознаграждения (**Engineering Reward Engine**):
+GO-BUILD работает как **детерминированный рельсовый конвейер (State Machine)** с обязательным шлюзом подтверждения пользователя (**Mandatory User Approval Gate**), явным разделением на зелёный коридор (**DO / ENCOURAGED**) и красный коридор (**DON'T / FORBIDDEN**), а также системой инженерного вознаграждения (**Engineering Reward Engine**):
 
 ```text
-[PHASE 1: SCOPE LOCK & SIZING] → [PHASE 2: DISCOVERY & REUSE] → [PHASE 3: ARCHITECTURE & NAMING]
+[PHASE 1: SCOPE LOCK & SIZING] → [PHASE 2: DISCOVERY & REUSE] → [PHASE 3: ROOT CAUSE & PLAN DESIGN]
                                                                         ↓
-[PHASE 6: REWARD SCORE & REPORT] ← [PHASE 5: DEFENSIVE VERIFY] ← [PHASE 4: SURGICAL EXECUTION]
+[PHASE 6: REWARD SCORE & REPORT] ← [PHASE 5: DEFENSIVE VERIFY] ← [USER APPROVAL GATE] ← [PHASE 4: SURGICAL EXECUTION]
 ```
 
-1. **Фаза 1 (Scope Lock & Task Sizing)**: Определение масштаба (`SURGICAL` / `MAJOR` / `FULL`), фиксация 4 квадрантов (`[REQUESTED]`, `[PROTECTED]`, `[REQUIRED]`, `[FORBIDDEN]`). До фиксации скоупа писать код **категорически запрещено**.
-2. **Фаза 2 (Discovery & Reuse — Сначала искать)**: Обязательный аудит имеющихся функций, типов, библиотек в проекте. Запрет создания дубликатов и слепой установки пакетов.
-3. **Фаза 3 (Architecture & Naming Design)**: Именование строго по действию (`calculatePrice`, `createUser`), запрет абстрактных названий (`doSomething`, `process`, `handle`), доменная группировка, закрытые схемы DTO (`.strict()`).
-4. **Фаза 4 (Surgical Execution — Pre-Action Gate)**: Штамп `[PRE-ACTION AUDIT]` перед каждым изменением файлов. Минимальный diff, сохранение стиля (Anti-Style-Drift), защита чужого legacy-кода, верстка по формуле `Border Last` и `Zero-Emoji`.
-5. **Фаза 5 (Defensive & Quality Verification — Step → Verify)**: Автономный запуск сборки, линтера, тестов; проверка Data Layer Binding (IDOR), параметризации (SQLi), экранирования (XSS). Запрет Command Dumps («запустите сами»).
-6. **Фаза 6 (Reward Score & Completion)**: Расчет индекса инженерного качества (Engineering Reward Score 0–100) и краткий отчёт на русском языке.
+1. **Фаза 1 (Scope Lock & Task Sizing — Оценка масштаба)**: Определение масштаба (`SURGICAL` / `MAJOR` / `FULL`), фиксация 4 квадрантов (`[REQUESTED]`, `[PROTECTED]`, `[REQUIRED]`, `[FORBIDDEN]`). До фиксации скоупа писать код **категорически запрещено**.
+2. **Фаза 2 (Discovery & Reuse — Исследование и аудит)**: Обязательный аудит кода, функций, типов и библиотек в проекте. При багах — глубокий поиск истинной первопричины сбоя (Root Cause), а не маскировка симптомов. При необходимости комплексного анализа — консультация с субагентами.
+3. **Фаза 3 (Root Cause & Plan Design — Раскладка пользователю)**: Четкая формулировка решения. Агент подробно и понятно «раскладывает что да как» пользователю: в чем причина/суть, что планируется затронуть, каков план.
+4. **Шлюз одобрения (User Approval Gate — Блокирующий гейт)**: До получения явного одобрения пользователя на предложенный план вносить изменения в файлы **СТРОГО ЗАПРЕЩЕНО**.
+5. **Фаза 4 (Surgical Execution — Pre-Action Gate)**: После одобрения — штамп `[PRE-ACTION AUDIT]` перед каждым изменением файлов. Минимальный diff, сохранение стиля (Anti-Style-Drift), защита чужого legacy-кода, верстка по формуле `Border Last` и `Zero-Emoji`.
+6. **Фаза 5 (Defensive & Quality Verification — Step → Verify)**: Автономный запуск сборки, линтера, тестов; проверка Data Layer Binding (IDOR), параметризации (SQLi), экранирования (XSS). Запрет Command Dumps («запустите сами»).
+7. **Фаза 6 (Reward Score & Completion)**: Расчет индекса инженерного качества (Engineering Reward Score 0–100) и краткий итоговый отчёт на русском языке.
 
 Подробнее: [Рельсовый конвейер и система вознаграждения](./references/pipeline-and-reward-engine.md).
 
@@ -443,7 +444,13 @@ P0 (ABSOLUTE)  >>>  P1 (MANDATORY)  >>>  P2 (CONDITIONAL)  >>>  P3 (GUIDANCE)
 
 1. **P0 — ABSOLUTE (Законы нулевой терпимости)**:
    - Исключения **категорически запрещены**. Нарушение влечет немедленный **STOP** и откат.
-   - Сюда входят: **P0-1 Scope Lock Integrity**, **P0-2 Anti-AI-Slop & Zero-Emoji**, **P0-3 Autonomous Execution (No Command Dumps)**, **P0-4 Data Safety & Legacy Protection**, **P0-5 Violation Stop Law**.
+   - Сюда входят:
+     - **P0-0 Mandatory User Approval & Root-Cause Gate**: Прежде чем менять код, агент обязан исследовать первопричину (Root Cause), оценить масштаб (Task Sizing), продумать решение, при необходимости проконсультироваться с субагентами, **лаконично разложить пользователю «что да как»** и получить **прямое подтверждение/одобрение пользователя**. Вносить изменения в файлы без явного одобрения плана **СТРОГО ЗАПРЕЩЕНО**.
+     - **P0-1 Scope Lock Integrity**: Строгое следование границам задачи без отсебятины и разрастания скоупа.
+     - **P0-2 Anti-AI-Slop & Zero-Emoji**: Никаких эмодзи, декоративного мусора и фейкового контекста.
+     - **P0-3 Autonomous Execution (No Command Dumps)**: Самостоятельный запуск проверок и сборки в среде.
+     - **P0-4 Data Safety & Legacy Protection**: Защита чужого кода, ключей и сессий.
+     - **P0-5 Violation Stop Law**: Немедленная остановка при любом несоответствии правилам.
 2. **P1 — MANDATORY (Обязательные инженерные протоколы)**:
    - Обязательны для каждого соответствующего действия. Отклонение допустимо только по прямому запросу пользователя.
    - Сюда входят: **P1-1 Pre-Action Gate & Audit Stamp**, **P1-2 Search Before Create**, **P1-3 Surgical Changes & Anti-Style-Drift**, **P1-4 Clean up only your own mess**, **P1-5 Step → Verify & Continuous Compliance**, **P1-6 Window-First Adaptivity & Content Priority**, **P1-7 Border Last & Layout Core 4**, **P1-8 Concise Communication & Pre-Response Gate**.
@@ -455,7 +462,7 @@ P0 (ABSOLUTE)  >>>  P1 (MANDATORY)  >>>  P2 (CONDITIONAL)  >>>  P3 (GUIDANCE)
 
 **Единые правила разрешения конфликтов и приоритетов**:
 ```text
-P0 Scope Lock / User Request
+P0 User Approval & Scope Lock
 >
 Existing Project Architecture
 >
@@ -502,16 +509,17 @@ Optional Improvements / Abstractions
 
 ### 7.3. Pre-Action Gate, Pre-Action Audit Stamp и Core-фильтры
 
-Перед вызовом любого инструмента, изменяющего состояние кодовой базы (`write_to_file`, `replace_file_content`, мутирующий `run_command`), агент обязан зафиксировать строку **Pre-Action Audit Stamp** и пройти проверку по 5 бинарным условиям.
+Перед вызовом любого инструмента, изменяющего состояние кодовой базы (`write_to_file`, `replace_file_content`, мутирующий `run_command`), агент обязан зафиксировать строку **Pre-Action Audit Stamp** и пройти проверку по 6 бинарным условиям.
 
 **Обязательный Pre-Action Audit Stamp**:
 Перед каждым мутирующим вызовом инструмента агент обязан зафиксировать запись:
 ```text
-[PRE-ACTION AUDIT]: Scope: OK | Rules: P0,P1 | Checks: PASS | Decision: PASS
+[PRE-ACTION AUDIT]: Approval: OK | Scope: OK | Rules: P0,P1 | Checks: PASS | Decision: PASS
 ```
 Вызов мутирующего инструмента без этого штампа считается грубым нарушением (P0 Violation) и влечёт немедленный `STOP`.
 
-**5 бинарных проверок шлюза**:
+**6 бинарных проверок шлюза**:
+0. **User Approval Check**: Получено ли явное подтверждение/одобрение пользователя на предложенный план и первопричину?
 1. **Scope Check**: Действие лежит строго внутри `[REQUESTED]` / `[REQUIRED]` и не заходит в `[FORBIDDEN]`?
 2. **Search Check**: Проверено ли отсутствие готовой реализации/функции/модуля в проекте (Search Before Create)?
 3. **Core Checks (Anti-Slop & Layout)**: Пройдены ли экспресс-фильтры визуальной чистоты и вёрстки?
@@ -1184,8 +1192,10 @@ VPN + основная кнопка + статус + скорость + серв
 * [ ] При переносе из Web в Desktop проведён аудит 10 пунктов (окно не скроллится целиком, изолированные контейнеры, нативный сайдбар).
 
 #### 6. Rule Enforcement, Scope & Behavioral Check (Принудительное соблюдение правил):
+* [ ] Проведен предварительный анализ: определен масштаб (Task Sizing), исследована первопричина задачи/бага (Root Cause), сформирован план решения.
+* [ ] План и первопричина лаконично разложены пользователю («что да как»), получено явное одобрение пользователя перед началом любых правок кода (Mandatory User Approval Gate).
 * [ ] Четко зафиксирован Scope Lock (`[REQUESTED]`, `[PROTECTED]`, `[REQUIRED]`, `[FORBIDDEN]`).
-* [ ] Пройден Pre-Action Gate (5 бинарных проверок) перед каждым изменением файлов кодовой базы.
+* [ ] Пройден Pre-Action Gate (6 бинарных проверок) перед каждым изменением файлов кодовой базы.
 * [ ] Соблюдена Rule Trigger Map для каждого типа действия.
 * [ ] В случае любых нарушений/отклонений выполнен Violation Protocol (`STOP → IDENTIFY → REVERT → REPLAN → FIX → VERIFY → PROCEED`).
 * [ ] Выполнен Continuous Compliance Check (Micro-Audit diff) на каждом шаге разработки.
